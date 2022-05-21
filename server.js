@@ -67,7 +67,7 @@ httpServer.listen(port, () => {
 
 const io = require("socket.io")(httpServer, {
 	cors: {
-		origin: "*",
+		origin: "http://localhost:3000",
 	},
 });
 
