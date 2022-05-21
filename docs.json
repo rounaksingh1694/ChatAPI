@@ -1,0 +1,1004 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.4",
+		"title": "Blink API",
+		"contact": {}
+	},
+	"host": "blink-backend.herokuapp.com",
+	"basePath": "/api",
+	"securityDefinitions": {},
+	"schemes": ["https"],
+	"consumes": ["application/json"],
+	"produces": ["application/json"],
+	"paths": {
+		"/auth/signup": {
+			"post": {
+				"summary": "signup",
+				"tags": ["Authentication"],
+				"operationId": "signup",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/signuprequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/auth/signin": {
+			"post": {
+				"summary": "signin",
+				"tags": ["Authentication"],
+				"operationId": "signin",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/signinrequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/auth/signout": {
+			"get": {
+				"summary": "signout",
+				"tags": ["Authentication"],
+				"operationId": "signout",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/follow/follow/{userId}": {
+			"post": {
+				"summary": "follow",
+				"tags": ["Follow"],
+				"operationId": "follow",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/followrequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/follow/unfollow/{userId}": {
+			"post": {
+				"summary": "unfollow",
+				"tags": ["Follow"],
+				"operationId": "unfollow",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/unfollowrequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/follow/followers/all/{userId}": {
+			"get": {
+				"summary": "getAllFollowers",
+				"tags": ["Follow"],
+				"operationId": "getAllFollowers",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/follow/following/all/{userId}": {
+			"get": {
+				"summary": "getAllFollowing",
+				"tags": ["Follow"],
+				"operationId": "getAllFollowing",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/post/create/{userId}": {
+			"post": {
+				"summary": "createPost",
+				"tags": ["Post"],
+				"operationId": "createPost",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/createPostRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/post/all/{userId}": {
+			"get": {
+				"summary": "getAllPostsByUser",
+				"tags": ["Post"],
+				"operationId": "getAllPostsByUser",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/post/like/{postId}/{userId}": {
+			"get": {
+				"summary": "likePost",
+				"tags": ["Post"],
+				"operationId": "likePost",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "postId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/post/unlike/{postId}/{userId}": {
+			"get": {
+				"summary": "unlikePost",
+				"tags": ["Post"],
+				"operationId": "unlikePost",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "postId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/post/feed/{userId}": {
+			"get": {
+				"summary": "getPostsByUserFollowing",
+				"tags": ["Post"],
+				"operationId": "getPostsByUserFollowing",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/post/one/{postId}/{userId}": {
+			"get": {
+				"summary": "getPostById",
+				"tags": ["Post"],
+				"operationId": "getPostById",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "postId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/comment/create/{postId}/{userId}": {
+			"post": {
+				"summary": "createComment",
+				"tags": ["Comment"],
+				"operationId": "createComment",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "postId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/createCommentRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/comment/delete/{postId}/{commentId}/{userId}": {
+			"delete": {
+				"summary": "deleteComment",
+				"tags": ["Comment"],
+				"operationId": "deleteComment",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "postId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "commentId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/comment/all/{postId}/{userId}": {
+			"get": {
+				"summary": "getAllComments",
+				"tags": ["Comment"],
+				"operationId": "getAllComments",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "postId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/user/": {
+			"get": {
+				"summary": "getMyUser",
+				"tags": ["User"],
+				"operationId": "getMyUser",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/user/{userId}": {
+			"get": {
+				"summary": "getUser",
+				"tags": ["User"],
+				"operationId": "getUser",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/user/profilePhoto/{userId}": {
+			"get": {
+				"summary": "getUserProfilePhoto",
+				"tags": ["User"],
+				"operationId": "getAllUsers",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/user/all/{userId}": {
+			"get": {
+				"summary": "getAllUsers",
+				"tags": ["User"],
+				"operationId": "getAllUsers",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/user/update/{userId}": {
+			"post": {
+				"summary": "updateUser",
+				"tags": ["User"],
+				"operationId": "updateUser",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/updateUserRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/explore/posts/{userId}": {
+			"get": {
+				"summary": "getPostsForExplore",
+				"tags": ["Explore"],
+				"operationId": "getPostsForExplore",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/explore/users/{userId}": {
+			"get": {
+				"summary": "getUsersForExplore",
+				"tags": ["Explore"],
+				"operationId": "getUsersForExplore",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		},
+		"/search/search/{userId}": {
+			"get": {
+				"summary": "searchByUsernameOrNameOrBoth",
+				"tags": ["Search"],
+				"operationId": "search",
+				"deprecated": false,
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "Authorization",
+						"in": "header",
+						"required": true,
+						"default": "Bearer {token}",
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"default": "",
+						"type": "string"
+					},
+					{
+						"name": "searchQuery",
+						"in": "query",
+						"required": true,
+						"default": ".",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"signuprequest": {
+			"title": "signuprequest",
+			"example": {
+				"name": "string",
+				"username": "string",
+				"password": "string",
+				"profilePhoto": "img url to profile photo",
+				"bio": "bio",
+				"coverPhoto": "cover photo"
+			},
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"profilePhoto": {
+					"type": "string"
+				}
+			},
+			"required": ["name", "username", "password", "profilePhoto"]
+		},
+		"signinrequest": {
+			"title": "signuprequest",
+			"example": {
+				"username": "string",
+				"password": "string"
+			},
+			"type": "object",
+			"properties": {
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			},
+			"required": ["username", "password"]
+		},
+		"followrequest": {
+			"title": "followrequest",
+			"example": {
+				"userToFollow": {
+					"_id": "string",
+					"username": "string"
+				}
+			},
+			"type": "object",
+			"properties": {
+				"userToFollow": {
+					"$ref": "#/definitions/UserToFollow"
+				}
+			},
+			"required": ["userToFollow"]
+		},
+		"unfollowrequest": {
+			"title": "unfollowrequest",
+			"example": {
+				"userToUnfollow": {
+					"_id": "string",
+					"username": "string"
+				}
+			},
+			"type": "object",
+			"properties": {
+				"userToFollow": {
+					"$ref": "#/definitions/UserToUnfollow"
+				}
+			},
+			"required": ["userToFollow"]
+		},
+		"UserToFollow": {
+			"title": "UserToFollow",
+			"example": {
+				"_id": "string",
+				"username": "string"
+			},
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				}
+			},
+			"required": ["_id", "username"]
+		},
+		"UserToUnfollow": {
+			"title": "UserToUnfollow",
+			"example": {
+				"_id": "string",
+				"username": "string"
+			},
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				}
+			},
+			"required": ["_id", "username"]
+		},
+		"createPostRequest": {
+			"title": "createPostRequest",
+			"example": {
+				"postUrl": "image url to post image",
+				"description": "cation"
+			},
+			"type": "object",
+			"properties": {
+				"postUrl": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				}
+			},
+			"required": ["postUrl", "description"]
+		},
+		"createCommentRequest": {
+			"title": "createCommentRequest",
+			"example": {
+				"comment": "Comment 1 on Post 1"
+			},
+			"type": "object",
+			"properties": {
+				"comment": {
+					"type": "string"
+				}
+			},
+			"required": ["comment"]
+		},
+		"updateUserRequest": {
+			"title": "updateUserRequest",
+			"example": {
+				"bio": "image url to post image",
+				"coverPhoto": "cation",
+				"name": "name",
+				"profilePhoto": "profilePhoto"
+			},
+			"type": "object",
+			"properties": {
+				"bio": {
+					"type": "string"
+				},
+				"coverPhoto": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"profilePhoto": {
+					"type": "string"
+				}
+			},
+			"required": ["bio", "coverPhoto", "name", "profilePhoto"]
+		}
+	}
+}

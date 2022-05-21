@@ -30,26 +30,4 @@ const pusher = new Pusher({
 	useTLS: true,
 });
 
-Chat.watch([], { fullDocument: "updateLookup" }).on("change", (change) => {
-	console.log("CHAT CHANGED", change);
-	if (change.operationType == "update") {
-		const updated = change.updateDescription.updatedFields;
-		const fullDoc = change.fullDocument;
-		console.log("FULL DIC ID", fullDoc._id);
-		Chat.findById(fullDoc._id)
-			.populate("messages")
-			.exec((error, chat) => {
-				if (!error && chat) {
-					console.log("FULL DOC", chat);
-					pusher.trigger((fullDoc._id + "").trim(), "new", {
-						message: chat.messages[chat.messages.length - 1],
-						chatId: chat._id,
-					});
-				} else {
-					console.error("ERROR IN OBSERVING", error);
-				}
-			});
-	}
-});
-
 module.exports = Chat;
