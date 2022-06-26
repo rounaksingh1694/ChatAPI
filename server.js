@@ -52,8 +52,14 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(express.json());
+app.set("trust proxy", ["loopback", "linklocal", "uniquelocal"]);
 
-const port = process.env.PORT ? process.env.PORT : 8000;
+app.get("/", (req, res) => {
+	res.send("<h2>Hello world<h2>");
+	console.log("************------_______ITT RUNNSS_______------***********");
+});
+
+const port = process.env.PORT ? process.env.PORT : 5000;
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/chat", chatRoutes);

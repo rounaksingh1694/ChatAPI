@@ -72,6 +72,7 @@ exports.signIn = (req, res) => {
 
 	User.findOne({ email }, (error, user) => {
 		if (error || !user) {
+			console.error("ERROR SIGN IN", error);
 			return getErrorMessageInJson(res, 400, "User does not exist");
 		}
 

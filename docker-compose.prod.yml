@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+  nginx:
+    ports:
+      - "5000:80"
+  chat-api:
+    build:
+      context: .
+      args:
+        NODE_ENV: production
+    environment:
+      - NODE_ENV=production
+    command: node server.js
