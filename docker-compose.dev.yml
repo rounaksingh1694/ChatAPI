@@ -1,6 +1,7 @@
 version: "3.3"
 services:
   nginx:
+    image: nginx:stable-alpine
     ports:
       - "5000:80"
   chat-api:
