@@ -55,7 +55,7 @@ app.use(express.json());
 app.set("trust proxy", ["loopback", "linklocal", "uniquelocal"]);
 
 app.get("/", (req, res) => {
-	res.send("<h2>Hello world!!!!<h2>");
+	res.send("<h2>Hello world<h2>");
 	console.log("************------_______ITT RUNNSS_______------***********");
 });
 
